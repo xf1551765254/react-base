@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script src="./node_modules/react/umd/react.development.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+        // 组件局部渲染
+        function tick(){
+            var time= new Date().toLocaleTimeString() //(1)声明式
+            var ele=<div>
+                <h1 className="red" name="jac">hellow</h1>
+                <h1 className="red" name="jac">{time}</h1>
+            </div>
+            ReactDOM.render( 
+                ele,
+             document.getElementById('app'))
+       }
+       setInterval(tick,1000)//元素渲染
+        // (2)组件化
+        // 组件化ui  模块化功能
+        // (3) 灵活  单/多页面   服务端渲染   RN-App
+
+    </script>
+</body>
+</html>
