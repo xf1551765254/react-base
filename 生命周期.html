@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script src="./node_modules/react/umd/react.development.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+        // componentWillReceiveProps
+        class Hello extends React.Component{
+            constructor(props){
+                console.log('初始化阶段') //开始前,没有数据
+                // 初始化props
+                super(props);
+                // 初始化 状态
+                this.state={name:'jac', age:30 }
+            }
+            componentWillMount() {
+                 console.log('组件加载之前',this.state.age) // 组件render开始前 有数据了
+            }
+            componentDidMount() {
+                console.log('组件加载后') // 组件渲染后,有页面了
+            }
+            updateUser=()=>{
+                // 更新数据
+                this.setState({
+                    name:'we',
+                    age:23
+                })
+            }
+            shouldComponentUpdate(){
+                console.log('数据是否需要更新')
+                return true
+            }
+            componentWillUpdate(){
+                console.log('数据将要更新')
+            }
+            componentDidUpdate(){
+                console.log('数据已经更新')
+            }
+            
+            render(){
+                console.log('组件加载或者数据更新')
+                return <div>
+                <h1>{this.state.age}</h1>
+                <h1>{this.state.name}</h1>
+                <button onClick={this.updateUser}>更新时间</button>
+                </div>
+            }
+        }
+    
+        ReactDOM.render(
+            <Hello/>,
+            document.getElementById('app')
+        )
+
+        
+    </script>
+</body>
+</html>
